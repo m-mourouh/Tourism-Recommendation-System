@@ -1,0 +1,80 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% load custom_tags %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
+{% endblock %}
+ {% block title %}Accueil{% endblock %}
+
+
+  {% block content %}
+
+  <main class="container">
+    <form class="searchForm" data-url={% url 'home-page' %} method="POST" spellcheck="false">
+      {% csrf_token %}
+        <small class="error"></small>
+        <input type="text" placeholder="chercher un hôtel" name="query" class="hotelInput" />
+      <button type="submit" class="cityBtn" name="search"><i class="fas fa-search"></i></button>
+    </form>
+    <!-- <h2 class="t-recommend" id="hotels">Hôtels Recommandés</h2> -->
+    <h2 class="t-recommend" id="hotels">Liste des Hôtels</h2>
+    <div class="grid-container">
+     
+        {% for h in hotels %}
+        <div class="card">
+        <img src= {%  static h.9|imgURL %} alt="hotel" />
+        <h5 class="hotel-name">{{h.1}}</h5>
+        <p class="hotel-city">Hôtel à {{h.7}}</p>
+        <p class="hotel-description">{{h.2}}</p>
+        <a href="{% url 'details-page' id=h.0 %}" class="watch-more">Voir plus</a>
+        <h5 class="hotel-price">À partir de {{h.5}} MAD par nuit</h5>
+        <p class="hotel-rating">
+          <b><span>{{h.4}}</span> 
+            {% if h.4 < 5 %}
+            Passable</b> . {{h.3}} expériences vécues
+            {% endif %}
+
+            {% if h.4 >= 5 and h.4 < 5.5 %}
+            Moyen</b> . {{h.3}} expériences vécues
+            {% endif %}
+
+            {% if h.4 >= 5.5 and h.4 < 6 %}
+            Bon</b> . {{h.3}} expériences vécues
+            {% endif %}
+
+            {% if h.4 >= 6 and h.4 < 7 %}
+            Agréable</b> . {{h.3}} expériences vécues
+            {% endif %}
+
+            {% if h.4 >= 7 and h.4 < 8 %}
+            Bien</b> . {{h.3}} expériences vécues
+            {% endif %}
+
+            {% if h.4 >= 8 and h.4 < 8.5 %}
+            Trés bien</b> . {{h.3}} expériences vécues
+            {% endif %}
+
+            {% if h.4 >= 8.5 and h.4 < 9 %}
+            Superbe</b> . {{h.3}} expériences vécues
+            {% endif %}
+
+            {% if h.4 >= 9 and h.4 < 9.5  %}
+            Fabuleux</b> . {{h.3}} expériences vécues
+            {% endif %}
+            
+            {% if h.4 >= 9.5 and h.4 < 10 %}
+            Exceptionnel</b> . {{h.3}} expériences vécues
+            {% endif %}
+        </p>
+     </div>
+        {% endfor %}
+     
+    </div>
+  </main>
+  {% endblock %} 
+
+  {% block scripts %}
+  <script src="{% static 'js/index.js' %}"></script>
+  {% endblock%}
+

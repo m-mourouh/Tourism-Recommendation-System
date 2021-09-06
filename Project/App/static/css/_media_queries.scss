@@ -1,0 +1,5 @@
+@mixin Query($breakpoint) {
+    @media(max-width:$breakpoint) {
+        @content
+    }
+}

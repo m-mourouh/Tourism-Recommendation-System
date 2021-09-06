@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'img/icons/vnv-brands.svg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!-- Add somthing -->
+    {% block links %}{% endblock%}
+    <title>{% block title %}Bae {% endblock %}</title>
+</head>
+<body>
+    <div class="loader-container">
+        <div class="loader"><div></div><div></div></div>
+    </div>
+    <header>
+        <nav>
+            <ul class="nav-bar1">
+                <li class="logo1"><a href="{% url 'home-page' %}"><i class="fab fa-vnv"></i></a></li>
+                <input type="checkbox"  id="check1">
+                <span class="menu1">
+                    <li><a href="{% url 'home-page' %}">Accueil</a></li>
+                    <!-- <li><a href="#">Hotels</a></li> -->
+                    {% if client_id %}
+                    <li><a href="{% url 'recommendation-page' %}">recommendation</a></li>
+                    <li class="sm-il"><a id="a-l1" href="{% url 'profile-page' %}"><i class="fas fa-user-alt"></i> Profile</a></li>
+                    <li class="sm-il"><a id="a-l2" href="{% url 'logout-page' %}"><i class="fas fa-sign-out-alt"></i> Se déonnecter</a></li>
+                    <li class="PImg">
+                        {% if client.profile_img %}
+                                    <img src="{{ client.profile_img.url }}"
+                                    
+                                         alt="Profiel image">
+                                    {% else %}
+                                    <img src="/static/img/unknown-user.png"
+                                        
+                                         alt="Profiel image">
+                                    {% endif %}
+                        <span class="sub-links">
+                            <a href="{% url 'profile-page' %}"><i class="fas fa-user-alt"></i>Profile</a>
+                            <a href="{% url 'logout-page' %}"><i class="fas fa-sign-out-alt"></i>Se déonnecter</a>
+                        </span>
+                    </li>
+                        {% else %}
+                        <li><a href="{% url 'login-page' %}">Se connecter</a></li>
+                        <li><a href="{% url 'signup-page' %}">S'inscrire</a></li>
+                    {% endif %}
+                </span>
+                <label for="check1" class="open-menu1"><i class="fas fa-bars"></i></label>
+            </ul>
+        </nav>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <footer>
+        <p class="footer-text">FSTM | LST IRM 2020-2021 | Porjet PFE</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+    {% block scripts %}{% endblock%}
+</body>
+</html>

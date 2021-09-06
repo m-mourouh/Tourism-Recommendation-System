@@ -1,0 +1,116 @@
+@import 'utilities' ;
+@import 'fonts';
+@import 'colors' ;
+
+body {
+        font-family: $Poppins;
+        overflow-x: hidden;
+}
+.container {
+    margin-top: 100px ;
+    position: relative;
+    width: 100%;
+    //-----------searchForm-----------------------
+    .searchForm {
+        width: 100%;
+        margin-top: 100px ;
+        display: flex;
+        justify-content: center;
+    
+        input[name="city"] {
+            padding: 12px 8px;
+            font-size: 1.2rem;
+            width: 60%;
+            border: none;
+            box-shadow: 0 0 6px $shadowColor;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+            color: $color2;
+        }
+        .cityBtn {
+            border-radius: 0 20px 20px 0;
+            border: none;
+            outline: none;
+            font-size: 1.2rem;
+            color: $white;
+            background: $color1;
+            padding: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 10px $shadowColor;
+            &:hover{
+                background: darken($color1,2%);
+            }
+        }
+    }
+    .t-recommend {
+        width: 90%;
+        margin: 20px auto;
+        color: $color2;
+    }
+    .grid-container {
+        width: 90%;
+        margin: 20px auto;
+        grid-gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+        
+        .card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            // width: 250px;
+            background-color: $white;
+            box-shadow: 0 0 6px $shadowColor;
+            margin: 0 auto;
+            img{
+                width: 100%;
+                height: 200px;
+            }
+            .hotel-name, .hotel-description, .watch-more, .hotel-price, .hotel-ratin, .hotel-city {
+                padding: 5px;
+                color: $color2;
+            }
+            .hotel-name {
+                text-transform: capitalize;
+            }
+            .hotel-city {
+                font-size: 0.8rem;
+            }
+            .hotel-description{
+                overflow: hidden;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                word-wrap: break-word;
+                max-width: 100%;
+                max-height: 7.5em;
+                white-space: wrap;    
+                font-size: 0.9rem;
+            }
+            .watch-more {
+                color: $color4;
+                font-size:0.8rem ;
+            }
+            .hotel-rating {
+                font-size: 0.7rem;
+                padding: 5px;
+                span {
+                    background: $color4;
+                    padding: 0 5px;
+                    font-size: 0.8rem;
+                    color: $white;
+                    border-radius: 4px;
+                }
+
+            }
+        }
+    }
+}
+
+// footer {
+//     margin-top: 100px;
+//     width: 100%;
+//     background: $white;
+//     box-shadow: 0 0 6px $shadowColor;
+//     padding: 10px;
+//     text-align: center;
+// }

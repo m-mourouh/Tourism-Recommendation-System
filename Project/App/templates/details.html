@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/details.css' %}">
+{% endblock %}
+{% block title %}Details{% endblock%}
+
+{% block content %}
+    <main class="container">
+        <div class="inner-wrapper">
+            <div class="intro">
+                <div class="head">
+                    <small>Hotel</small>
+                    <h2>{{ hotel.1 }}</h2>
+                    <span class="stars">
+                        {% for i in stars|rangeNum %}
+                        <i class="fas fa-star"></i>
+                        {% endfor %}
+                        {% for i in stars|calculate|rangeNum %}
+                        <i class="fas fa-star" id="white-stars"></i>
+                        {% endfor %}
+                    </span>
+                   
+                </div>
+                <div class="location">
+                    <span>
+                        <i class="fas fa-map-marker-alt"></i>  {{hotel.8}}
+                    </span>
+                </div>
+            </div>   
+            <div class="slider">
+                    <span class="heart"><i class="far fa-heart"></i></span>
+                    <div class="mainImg-wrapper">
+                        <img src={% static hotel.9|imgURL %} alt="hotel" class="main-img">
+                    </div>
+            </div>
+            <div class="desc">{{ hotel.2}} </div>
+            <div class="advg">
+                <h4>Ses points forts</h4>
+                <div class="inner">
+                    {% for a in amenities %}
+                    <span>{{a}}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108704.40228417695!2d-7.934894294793327!3d31.633506174560914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafee8d96179e51%3A0x5950b6534f87adb8!2z2YXYsdin2YPYtA!5e0!3m2!1sar!2sma!4v1624116868592!5m2!1sar!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="comments">
+                <form method="POST" class="deleteForm" data-url = {% url 'details-page' id=hotel.0  %}>
+                    {% csrf_token %}
+                    <input type="hidden" name="delete" value="comment{{client_id}}">
+                    <input type="submit" id="deleteInput" class="hide">
+                </form>
+                <h3 class="tComment">Commentaires clients</h3>
+                {% if comments %}
+                {% for comment in comments %}
+                <div class="user-comment {% if comment.client.id == client_id %}comment{{client_id}}{% endif %}">
+                    <div class="row1-wrapper">
+                        <p class="row-1">
+                          {% if comment.client.profile_img %}
+                          <span class="user-img"><img src="{{ comment.client.profile_img.url }}" alt=""></span>
+                          {% else %}
+                          <span class="user-img"><img src="{% static 'img/unknown-user.png' %}" alt=""></span>
+                          {% endif %}
+                            
+                            <span class="user-name">{{comment.client.firstname}} {{comment.client.lastname}}</span>
+                            <span class="user-rating">
+                                {% for i in comment.rating|rangeNum %}
+                                <i class="fas fa-star"></i>
+                                {% endfor %}
+                                {% for i in comment.rating|calculate|rangeNum %}
+                                <i class="fas fa-star" id="white-stars"></i>
+                                {% endfor %}
+                            </span>
+                        </p>
+                        {% if client_id %}
+                        {% if client_id == comment.client.id %}
+                        <div class="comment-actions">
+                            <i class="fas fa-ellipsis-h" id='dots'></i>
+                            <div class="options">
+                                <div class="arrow"></div>
+                                    <label class="update" onclick="showUpdateForm()">modifier</label>
+                                    <label for="deleteInput" class="delete">supprimer</label>
+                            </div>
+                        </div>
+                        
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    <p class="row-2">
+                        {{ comment.comment }}
+                    </p>
+                    <p class="datePosted"><small>Commentaire envoyé le {{comment.datePosted|date:'d-M-Y'}}</small></p>
+                </div>
+
+                {% endfor %}
+
+                {% endif %}
+
+                {% if client_id %}
+                {% if not has_comment %}
+                <div class="add-comment">
+                    <h3>Donner Votre Avis</h3>
+                    <div class="star-widget">
+                      <form method="POST" class="ratingForm" autocomplete="off" data-url = {% url 'details-page' id=hotel.0  %}>
+                        {% csrf_token %}
+                          <div class="current-user">
+                            <p class="col1">
+                              {% if client.profile_img %}
+                              <span class="current-user-img"><img src="{{ client.profile_img.url }}" alt=""></span>
+                              {% else %}
+                              <span class="current-user-img"><img src="{% static 'img/unknown-user.png' %}" alt=""></span>
+                              {% endif %}
+                                <span class="current-user-name">{{client}}</span>
+                            </p>
+                              <div class="user-rating">
+                                <input type="radio" name="rate" class="rate" id="rate-5"  value="5">
+                                <label for="rate-5" class="fas fa-star"></label>
+                                <input type="radio" name="rate" class="rate" id="rate-4" value="4">
+                                <label for="rate-4" class="fas fa-star"></label>
+                                <input type="radio" name="rate" class="rate" id="rate-3" value="3">
+                                <label for="rate-3" class="fas fa-star"></label>
+                                <input type="radio" name="rate" class="rate" id="rate-2" value="2">
+                                <label for="rate-2" class="fas fa-star"></label>
+                                <input type="radio" name="rate" class="rate" id="rate-1" value="1">
+                                <label for="rate-1" class="fas fa-star"></label>
+                              </div>
+                          </div>
+                        <div class="textarea">
+                          <textarea cols="50" rows="5" placeholder="Décrivez votre expérience.." class="comment-text" name="comment"></textarea>
+                          <input type="hidden" name="status" value="posted">
+                          <p><small class="error"></small></p>
+                        </div>
+                        <div class="comment-btn">
+                          <button type="submit">POSTER</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+
+                  {% endif %}
+                  {% if has_comment %}
+                  <div class="add-comment hideAdd">
+                      <h3>Donner Votre Avis</h3>
+                      <div class="star-widget">
+                        <form method="POST" class="ratingForm" autocomplete="off" data-url = {% url 'details-page' id=hotel.0  %}>
+                          {% csrf_token %}
+                            <div class="current-user">
+                              <p class="col1">
+                                {% if client.profile_img %}
+                                  <span class="current-user-img"><img src="{{ client.profile_img.url }}" alt=""></span>
+                                  {% else %}
+                                  <span class="current-user-img"><img src="{% static 'img/unknown-user.png' %}" alt=""></span>
+                                  {% endif %}
+                                  <span class="current-user-name">{{client}}</span>
+                              </p>
+                                <div class="user-rating">
+                                  <input type="radio" name="rate" class="rate" id="rate-5"  value="5">
+                                  <label for="rate-5" class="fas fa-star"></label>
+                                  <input type="radio" name="rate" class="rate" id="rate-4" value="4">
+                                  <label for="rate-4" class="fas fa-star"></label>
+                                  <input type="radio" name="rate" class="rate" id="rate-3" value="3">
+                                  <label for="rate-3" class="fas fa-star"></label>
+                                  <input type="radio" name="rate" class="rate" id="rate-2" value="2">
+                                  <label for="rate-2" class="fas fa-star"></label>
+                                  <input type="radio" name="rate" class="rate" id="rate-1" value="1">
+                                  <label for="rate-1" class="fas fa-star"></label>
+                                </div>
+                            </div>
+                          <div class="textarea">
+                            <textarea cols="50" rows="5" placeholder="Décrivez votre expérience.." class="comment-text" name="comment"></textarea>
+                            <input type="hidden" name="status" value="posted">
+                            <p><small class="error"></small></p>
+                          </div>
+                          <div class="comment-btn">
+                            <button type="submit">POSTER</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    {% endif %}
+                  {% endif %}
+            </div>
+          <!-- editform -->
+            {% if client_id%}
+<div class="editing"><div class="update-comment">
+    <h3>modifier votre avis</h3>
+    <div class="star-widget">
+      <form method="POST" class="editForm" autocomplete="off" data-url = {% url 'details-page' id=hotel.0  %}>
+            {% csrf_token %}
+          <div class="current-user">
+            <p class="col1">
+              {% if client.profile_img %}
+              <span class="current-user-img"><img src="{{ client.profile_img.url }}" alt=""></span>
+              {% else %}
+              <span class="current-user-img"><img src="{% static 'img/unknown-user.png' %}" alt=""></span>
+              {% endif %}
+                <span class="current-user-name">{{client}}</span>
+            </p>
+              <div class="user-rating">
+                <input type="radio" name="rate" class="rate" id="r5" value="5">
+                <label for="r5" class="fas fa-star"></label>
+                <input type="radio" name="rate" class="rate" id="r4" value="4">
+                <label for="r4" class="fas fa-star"></label>
+                <input type="radio" name="rate" class="rate" id="r3" value="3">
+                <label for="r3" class="fas fa-star"></label>
+                <input type="radio" name="rate" class="rate" id="r2" value="2">
+                <label for="r2" class="fas fa-star"></label>
+                <input type="radio" name="rate" class="rate" id="r1" value="1">
+                <label for="r1" class="fas fa-star"></label>
+              </div>
+          </div>
+        <div class="textarea">
+          <textarea cols="50" rows="5" placeholder="Décrivez votre expérience.." class="comment-text" name="comment" autocomplete="off"></textarea>
+          <input type="hidden" name="edit" value="edited">
+          <p><small class="error"></small></p>
+        </div>
+        <div class="comment-btn">
+          <button type="submit">Modifier</button>
+        </div>
+      </form>
+    </div>
+  </div><span class="closeUpdateBtn" onclick="hide()"><i class="fas fa-times"></i></span></div>
+
+{% endif %}
+          <!-- endForm -->
+        </div>
+        
+    </main>
+    
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/details.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,8 @@
+@import 'colors';
+@import 'fonts' ;
+@import 'utilities' ;
+@import 'media_queries';
+body  {
+    font-family: $Poppins;
+    // overflow-x: hidden;
+}

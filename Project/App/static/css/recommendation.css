@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+
+body {
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+.container {
+  margin-top: 100px;
+  position: relative;
+  width: 100%;
+}
+
+.container .searchForm {
+  width: 100%;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.container .searchForm input[name="city"] {
+  padding: 12px 8px;
+  font-size: 1.2rem;
+  width: 60%;
+  border: none;
+  box-shadow: 0 0 6px #ccc;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+  color: #2d3436;
+}
+
+.container .searchForm .cityBtn {
+  border-radius: 0 20px 20px 0;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  color: #FFF;
+  background: #0cc8e9;
+  padding: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.container .searchForm .cityBtn:hover {
+  background: #0cc0df;
+}
+
+.container .t-recommend {
+  width: 90%;
+  margin: 20px auto;
+  color: #2d3436;
+}
+
+.container .grid-container {
+  width: 90%;
+  margin: 20px auto;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.container .grid-container .card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #FFF;
+  box-shadow: 0 0 6px #ccc;
+  margin: 0 auto;
+}
+
+.container .grid-container .card img {
+  width: 100%;
+  height: 200px;
+}
+
+.container .grid-container .card .hotel-name, .container .grid-container .card .hotel-description, .container .grid-container .card .watch-more, .container .grid-container .card .hotel-price, .container .grid-container .card .hotel-ratin, .container .grid-container .card .hotel-city {
+  padding: 5px;
+  color: #2d3436;
+}
+
+.container .grid-container .card .hotel-name {
+  text-transform: capitalize;
+}
+
+.container .grid-container .card .hotel-city {
+  font-size: 0.8rem;
+}
+
+.container .grid-container .card .hotel-description {
+  overflow: hidden;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  max-width: 100%;
+  max-height: 7.5em;
+  white-space: wrap;
+  font-size: 0.9rem;
+}
+
+.container .grid-container .card .watch-more {
+  color: dodgerblue;
+  font-size: 0.8rem;
+}
+
+.container .grid-container .card .hotel-rating {
+  font-size: 0.7rem;
+  padding: 5px;
+}
+
+.container .grid-container .card .hotel-rating span {
+  background: dodgerblue;
+  padding: 0 5px;
+  font-size: 0.8rem;
+  color: #FFF;
+  border-radius: 4px;
+}

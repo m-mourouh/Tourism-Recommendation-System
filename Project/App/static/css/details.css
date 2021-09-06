@@ -1,0 +1,674 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  width: 100%;
+  position: relative;
+}
+
+.container .inner-wrapper {
+  margin: 100px auto;
+  border-radius: 5px;
+  width: 60%;
+  background: #FFF;
+  box-shadow: 0 0 8px #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1300px) {
+  .container .inner-wrapper {
+    width: 80%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .container .inner-wrapper {
+    width: 90%;
+  }
+}
+
+@media (max-width: 850px) {
+  .container .inner-wrapper {
+    width: 95%;
+  }
+}
+
+@media (max-width: 850px) {
+  .container .inner-wrapper {
+    width: 95%;
+  }
+}
+
+@media (max-width: 700px) {
+  .container .inner-wrapper {
+    width: 100%;
+    background-color: none;
+    box-shadow: none;
+    border-radius: none;
+  }
+}
+
+.container .inner-wrapper .editing {
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+}
+
+.container .inner-wrapper .editing .closeUpdateBtn {
+  position: absolute;
+  right: 25px;
+  top: 80px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.container .inner-wrapper .editing .closeUpdateBtn i {
+  color: #2d3436;
+  font-size: 1.5rem;
+}
+
+.container .inner-wrapper .editing .closeUpdateBtn i:hover {
+  opacity: 0.6;
+}
+
+.container .inner-wrapper .editing .update-comment {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.container .inner-wrapper .editing .update-comment h3 {
+  color: #2d3436;
+  margin-bottom: 40px;
+  text-transform: capitalize;
+}
+
+.container .inner-wrapper .editing .update-comment form .current-user {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.container .inner-wrapper .editing .update-comment form .current-user .col1 {
+  display: flex;
+  align-items: center;
+}
+
+.container .inner-wrapper .editing .update-comment form .current-user .col1 .current-user-img {
+  display: grid;
+  place-items: center;
+}
+
+.container .inner-wrapper .editing .update-comment form .current-user .col1 .current-user-img img {
+  width: 30px;
+  clip-path: circle();
+  text-align: center;
+}
+
+.container .inner-wrapper .editing .update-comment form .current-user .col1 .current-user-name {
+  padding: 0 5px;
+  font-weight: 500;
+  color: #2d3436;
+  text-transform: capitalize;
+}
+
+.container .inner-wrapper .editing .update-comment form .current-user .user-rating {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.container .inner-wrapper .editing .update-comment form .current-user .user-rating input {
+  display: none;
+}
+
+.container .inner-wrapper .editing .update-comment form .current-user .user-rating input:not(:checked) ~ label:hover,
+.container .inner-wrapper .editing .update-comment form .current-user .user-rating input:not(:checked) ~ label:hover ~ label {
+  color: gold;
+}
+
+.container .inner-wrapper .editing .update-comment form .current-user .user-rating input:checked ~ label {
+  color: gold;
+}
+
+.container .inner-wrapper .editing .update-comment form .current-user .user-rating input#r5:checked ~ label {
+  color: gold;
+}
+
+.container .inner-wrapper .editing .update-comment form .current-user .user-rating label {
+  font-size: 20px;
+  color: #e6e6e6;
+  padding: 2px;
+  transition: all 0.2s ease;
+}
+
+.container .inner-wrapper .editing .update-comment form .textarea textarea {
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  color: #2d3436;
+  border: 1px solid #2d3436;
+  padding: 10px;
+  font-size: 1rem;
+  resize: none;
+}
+
+.container .inner-wrapper .editing .update-comment form .textarea textarea:focus {
+  border-color: #0060dd;
+}
+
+.container .inner-wrapper .editing .update-comment form .textarea .error {
+  color: red;
+}
+
+.container .inner-wrapper .editing .update-comment form .comment-btn {
+  height: 45px;
+  width: 40%;
+  margin: 15px auto;
+}
+
+.container .inner-wrapper .editing .update-comment form .comment-btn button {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #00d4db;
+  color: white;
+  font-size: 1rem;
+  padding: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.container .inner-wrapper .editing .update-comment form .comment-btn button:hover {
+  background: #038096;
+}
+
+.container .inner-wrapper .intro {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px;
+  color: #2d3436;
+}
+
+.container .inner-wrapper .intro .head {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.container .inner-wrapper .intro .head small {
+  background: #ccc;
+  color: #FFF;
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+@media (max-width: 700px) {
+  .container .inner-wrapper .intro .head small {
+    font-size: 0.5rem;
+  }
+}
+
+.container .inner-wrapper .intro .head h2 {
+  padding: 0px 12px;
+}
+
+@media (max-width: 900px) {
+  .container .inner-wrapper .intro .head h2 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .container .inner-wrapper .intro .head h2 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 445px) {
+  .container .inner-wrapper .intro .head h2 {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 522px) {
+  .container .inner-wrapper .intro .head h2 {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .container .inner-wrapper .intro .head h2 {
+    font-size: 0.6rem;
+    padding: 0 2px;
+  }
+}
+
+.container .inner-wrapper .intro .head .stars {
+  display: flex;
+  align-items: center;
+}
+
+.container .inner-wrapper .intro .head .stars i {
+  color: gold;
+  font-size: 1rem;
+  padding-left: 1px;
+}
+
+.container .inner-wrapper .intro .head .stars i#white-stars {
+  color: #ccc;
+}
+
+@media (max-width: 550px) {
+  .container .inner-wrapper .intro .head .stars i {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .container .inner-wrapper .intro .head .stars i {
+    font-size: 0.6rem;
+  }
+}
+
+.container .inner-wrapper .intro .location {
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+@media (max-width: 560px) {
+  .container .inner-wrapper .intro .location {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 445px) {
+  .container .inner-wrapper .intro .location {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .container .inner-wrapper .intro .location {
+    font-size: 0.5rem;
+  }
+}
+
+.container .inner-wrapper .intro .location .fas {
+  color: #0cc8e9;
+  font-size: 1rem;
+}
+
+@media (max-width: 400px) {
+  .container .inner-wrapper .intro .location .fas {
+    font-size: 0.5rem;
+  }
+}
+
+.container .inner-wrapper .slider {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.container .inner-wrapper .slider .heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding-left: 3rem;
+}
+
+.container .inner-wrapper .slider .heart i {
+  color: #FFF;
+  font-size: 1.5rem;
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+@media (max-width: 550px) {
+  .container .inner-wrapper .slider .heart i {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 470px) {
+  .container .inner-wrapper .slider .heart i {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 470px) {
+  .container .inner-wrapper .slider .heart {
+    padding-left: 1rem;
+  }
+}
+
+.container .inner-wrapper .slider .heart:hover i {
+  color: red;
+}
+
+.container .inner-wrapper .slider .mainImg-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.container .inner-wrapper .slider .mainImg-wrapper .main-img {
+  width: 100%;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.container .inner-wrapper .desc {
+  color: #2d3436;
+  padding: 10px;
+  text-align: justify;
+}
+
+@media (max-width: 550px) {
+  .container .inner-wrapper .desc {
+    font-size: 0.8rem;
+  }
+}
+
+.container .inner-wrapper .advg {
+  padding: 10px;
+  color: #2d3436;
+}
+
+.container .inner-wrapper .advg .inner {
+  margin-top: 12px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-content: space-between;
+}
+
+.container .inner-wrapper .advg .inner span {
+  background: #FFF;
+  border-radius: 5px;
+  box-shadow: 0 0 6px #ccc;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+}
+
+.container .inner-wrapper .advg .inner span i {
+  color: #00b894;
+}
+
+.container .inner-wrapper .map {
+  width: 98%;
+  border-radius: 5px;
+  margin: 10px auto;
+  background: #FFF;
+  box-shadow: 0 0 8px #ccc;
+  padding: 5px;
+}
+
+.container .inner-wrapper .map iframe {
+  width: 100%;
+}
+
+.container .inner-wrapper .comments {
+  padding: 10px;
+}
+
+.container .inner-wrapper .comments h3 {
+  color: #2d3436;
+}
+
+.container .inner-wrapper .comments .deleteForm {
+  display: none;
+}
+
+.container .inner-wrapper .comments .editForm {
+  display: none;
+}
+
+.container .inner-wrapper .comments .user-comment {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 6px #ccc;
+  border-radius: 5px;
+  padding: 10px 5px 2px 5px;
+  margin: 10px 0;
+  color: #2d3436;
+  transition: 0.25s ease-in-out;
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper .row-1 {
+  display: flex;
+  align-items: center;
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper .row-1 .user-img {
+  display: grid;
+  place-items: center;
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper .row-1 .user-img img {
+  width: 30px;
+  clip-path: circle();
+  text-align: center;
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper .row-1 .user-name {
+  padding: 0 5px;
+  font-weight: 500;
+  color: #2d3436;
+  text-transform: capitalize;
+  font-size: 0.9rem;
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper .row-1 .user-rating {
+  color: gold;
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper .row-1 .user-rating #white-stars {
+  color: #ccc;
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper .comment-actions {
+  position: relative;
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper .comment-actions .fas {
+  transform: translate(-5px, -10px);
+  cursor: pointer;
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper .comment-actions .options {
+  position: absolute;
+  right: 0;
+  top: 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFF;
+  padding: 12px;
+  border-radius: 5px;
+  box-shadow: 0 0 6px #ccc;
+  display: none;
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper .comment-actions .options .arrow {
+  position: absolute;
+  top: -6px;
+  right: 0;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid rgba(32, 32, 32, 0.5);
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper .comment-actions .options label {
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-align: center;
+  padding: 2px;
+  color: #2d3436;
+  transition: 0.15s ease;
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper .comment-actions .options label:nth-child(2):hover {
+  color: dodgerblue;
+}
+
+.container .inner-wrapper .comments .user-comment .row1-wrapper .comment-actions .options label:hover {
+  color: tomato;
+}
+
+.container .inner-wrapper .comments .user-comment .row-2 {
+  font-size: 1rem;
+  padding-left: 40px;
+  margin-top: 12px;
+}
+
+.container .inner-wrapper .comments .user-comment .datePosted {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  align-self: flex-end;
+}
+
+.container .inner-wrapper .comments .add-comment {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.container .inner-wrapper .comments .add-comment form .current-user {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.container .inner-wrapper .comments .add-comment form .current-user .col1 {
+  display: flex;
+  align-items: center;
+}
+
+.container .inner-wrapper .comments .add-comment form .current-user .col1 .current-user-img {
+  display: grid;
+  place-items: center;
+}
+
+.container .inner-wrapper .comments .add-comment form .current-user .col1 .current-user-img img {
+  width: 30px;
+  clip-path: circle();
+  text-align: center;
+}
+
+.container .inner-wrapper .comments .add-comment form .current-user .col1 .current-user-name {
+  padding: 0 5px;
+  font-weight: 500;
+  color: #2d3436;
+  text-transform: capitalize;
+}
+
+.container .inner-wrapper .comments .add-comment form .current-user .user-rating {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.container .inner-wrapper .comments .add-comment form .current-user .user-rating input {
+  display: none;
+}
+
+.container .inner-wrapper .comments .add-comment form .current-user .user-rating input:not(:checked) ~ label:hover,
+.container .inner-wrapper .comments .add-comment form .current-user .user-rating input:not(:checked) ~ label:hover ~ label {
+  color: gold;
+}
+
+.container .inner-wrapper .comments .add-comment form .current-user .user-rating input:checked ~ label {
+  color: gold;
+}
+
+.container .inner-wrapper .comments .add-comment form .current-user .user-rating input#rate-5:checked ~ label {
+  color: gold;
+}
+
+.container .inner-wrapper .comments .add-comment form .current-user .user-rating label {
+  font-size: 20px;
+  color: #e6e6e6;
+  padding: 2px;
+  transition: all 0.2s ease;
+}
+
+.container .inner-wrapper .comments .add-comment form .textarea textarea {
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  color: #2d3436;
+  border: 1px solid #2d3436;
+  padding: 10px;
+  font-size: 1rem;
+  resize: none;
+}
+
+.container .inner-wrapper .comments .add-comment form .textarea textarea:focus {
+  border-color: #0060dd;
+}
+
+.container .inner-wrapper .comments .add-comment form .textarea .error {
+  color: red;
+}
+
+.container .inner-wrapper .comments .add-comment form .comment-btn {
+  height: 45px;
+  width: 40%;
+  margin: 15px auto;
+}
+
+.container .inner-wrapper .comments .add-comment form .comment-btn button {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #00d4db;
+  color: white;
+  font-size: 1rem;
+  padding: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.container .inner-wrapper .comments .add-comment form .comment-btn button:hover {
+  background: #038096;
+}
+
+.container .inner-wrapper .comments .hideAdd {
+  display: none;
+}

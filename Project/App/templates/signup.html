@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{% endblock %}
+
+{% block title %}inscription{% endblock %}
+
+{% block content %}
+<div class="container1">
+    <div class="left-column1">
+        <img src="{% static 'img/signup.svg' %}" alt="signup">
+    </div>
+    <div class="right-column1">
+        <form method="POST"   class="signUpForm" autocomplete="off" data-url = {% url 'signup-page' %}>
+            {% csrf_token %}
+            <h1>Inscription</h1>
+            <span>
+                <input type="text" id="prenom" name="firstname" class="prenom" placeholder="Prenom" {% if form.is_bound %}value={{form.prenom.value}} {% endif %}>
+                
+                <label for="prenom" class="border1"><i class="fas fa-user"></i></label>
+                <small class='input-errors' data-error-field='firstname'></small>
+            </span>
+             <span>
+                <input type="text" id="nom" name="lastname" class="nom" placeholder="Nom" {% if form.is_bound %}value={{form.nom.value}} {% endif %}>
+                
+                <label for="nom"><i class="fas fa-user"></i></label>
+                <small class='input-errors' data-error-field='lastname'></small>
+            </span>
+            <span>
+                <input type="text" id="email"  name="email" placeholder="Email" {% if form.is_bound %}value={{form.email.value}} {% endif %}>
+                
+                <label for="email"><i class="fas fa-envelope"></i></label>
+                <small class='input-errors' data-error-field='email'></small>
+            </span>
+            <span>
+                <input type="text" id="birth" placeholder="Date de Naissance MM/DD/YYYY"  name="birthdate" {% if form.is_bound %}value={{form.dateNaissance.value}} {% endif %}>
+               
+                <label for="birth"><i class="fas fa-calendar-alt"></i></label>
+                <small class='input-errors' data-error-field='birthdate'></small>
+            </span>
+     
+            <span class="gender">
+                <input type="radio" name="gender" value="homme" checked id="h" {% if form.is_bound and form.sexe.value == "homme" %}checked{% endif %}>
+                <input type="radio" name="gender" value="femme" id="f" {% if form.is_bound and form.sexe.value == "femme" %}checked{% endif %}>
+                
+                Sexe :
+                <label for="h">Homme : <samp class="S1"></samp> |</label>
+                <label for="f">Femme : <samp class="S2"></samp></label>
+            </span>
+            <span>
+                <select id="select" class="form-select border-0 border-bottom shadow-none " aria-label="Default select example" name="h_version">
+                    <option value="1" selected>version économique (prix < 400 MAD)</option>
+                        <option value="2">version milieu de gamme (prix < 1000 MAD) </option>
+                        <option value="3">version haut de gamme (prix >= 1000 MAD)</option>
+                    </select>
+    
+            </span>
+            <span>
+                <input type="password" id="password-1" name="password" placeholder='Mot de passe' {% if form.is_bound %}value={{form.motpass.value}}{% endif %}>
+                
+                <label for="password-1"><i class="fas fa-lock"></i></label>
+                <small class='input-errors' data-error-field='password'></small>
+            </span>
+           <span>
+                <input type="password" id="password-2" name="confirmpass" placeholder="Confirmer le mot de passe" {% if form.is_bound %}value={{form.confirmpass.value}}{% endif %}>
+              
+                <label for="password-2"><i class="fas fa-lock"></i></label>
+                <small class='input-errors'  data-error-field='confirmpass'></small>
+            </span>
+           
+            <button class="btn1" type="submit" name="submit">S'inscrire</button>
+            <p class="ask">Vous avez déjà un compte ? <a href="{% url 'login-page' %}">connexion</a></p>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{% static 'js/signup.js' %}"></script>
+{% endblock %}
+  
+ 
+    
