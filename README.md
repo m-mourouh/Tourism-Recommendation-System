@@ -1,13 +1,14 @@
 # Système de recommandation touristique
 
-*-------------------------------PFE LST IRM----------------------------------*
- | Pour Démarrer l'application sur votre machine veuillez ouvrir            |     
- | votre invite de commande ou votre teminal et suivre les étapes suivantes  |
-*----------------------------------------------------------------------------*
+ Pour Démarrer l'application sur votre machine veuillez ouvrir                 
+ votre invite de commande ou votre teminal et suivre les étapes suivantes :
 
-$ # Création d'environnement virtuel sur Windows
-$ # pip install virtualenv (si vous avez pas installer virtualenv sur votre PC)
-$ # virtualenv venv    (créer un environnement virtuel)
+## Création d'environnement virtuel sur Windows
+
+### Instalation d'environnement
+
+`pip install virtualenv`
+virtualenv venv    (créer un environnement virtuel)
 $ # venv/Scripts/activate (activer l'environnement virtuel)
 $
 $ # Installer des modules 
