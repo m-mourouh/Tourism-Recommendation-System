@@ -26,9 +26,10 @@
 `python manage.py migrate`
 
 ### Démarrage de l'application (mode développement)
+
 `python manage.py runserver <port> (port par défaut 8000)`
 
 ### Accés à l'application Web 
 
-[](http://127.0.0.1:8000/)
+[visit application ](http://127.0.0.1:8000/)
 
