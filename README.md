@@ -13,7 +13,7 @@
 
 ### activation l'environnement virtuel
 
-`venv/Scripts/activate`
+`source venv/Scripts/activate`
 
 
 ### Installation des modules 
