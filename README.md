@@ -1,4 +1,4 @@
-[![General badge](https://img.shields.io/badge/pip-v3-<COLOR>.svg)](https://shields.io/)
+[![General badge](https://img.shields.io/badge/pip-v3-red.svg)](https://shields.io/)
 # Système de recommandation touristique
 
  Pour Démarrer l'application sur votre machine veuillez ouvrir                 
