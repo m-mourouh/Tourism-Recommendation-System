@@ -3,7 +3,7 @@
  
  To start the application on your machine please open your command prompt or teminal and follow the steps below:
 
-### install a virtual environment
+### Install a virtual environment
 
 `pip install virtualenv`
 
@@ -11,7 +11,7 @@
 
 `virtualenv venv`
 
-### activate the virtual environment
+### Activate the virtual environment
 
 `source venv/Scripts/activate`
 
@@ -20,12 +20,12 @@
 
 `pip3 install -r requirements.txt`
 
-### create database tables
+### Create database tables
 
 `python manage.py makemigrations`
 `python manage.py migrate`
 
-### start the application 
+### Start the application 
 
 `python manage.py runserver <port> (port par défaut 8000)`
 
