@@ -1,36 +1,34 @@
-[![General badge](https://img.shields.io/badge/pip-v3-green.svg)](https://shields.io/)
-# Système de recommandation touristique
+# Tourism recommendation system
 
- Pour Démarrer l'application sur votre machine veuillez ouvrir                 
- votre invite de commande ou votre teminal et suivre les étapes suivantes :
+ To start the application on your machine please open your command prompt or teminal and follow the steps below:
 
-### Installation d'environnement
+### Environment installation
 
 `pip install virtualenv`
 
-### Création d'environnement virtuel sur votre machine
+### Create a virtual environment on your machine
 
 `virtualenv venv`
 
-### activation l'environnement virtuel
+### activate the virtual environment
 
 `source venv/Scripts/activate`
 
 
-### Installation des modules 
+### Install the required modules 
 
 `pip3 install -r requirements.txt`
 
-### Création des tables de la base de données
+### create database tables
 
 `python manage.py makemigrations`
 `python manage.py migrate`
 
-### Démarrage de l'application (mode développement)
+### start the application 
 
 `python manage.py runserver <port> (port par défaut 8000)`
 
-### Accés à l'application Web 
+### Run the application in your browser
 
 http://127.0.0.1:8000/
 
