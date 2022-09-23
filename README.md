@@ -3,7 +3,7 @@
  
  To start the application on your machine please open your command prompt or teminal and follow the steps below:
 
-### install the virtual environment
+### install a virtual environment
 
 `pip install virtualenv`
 
