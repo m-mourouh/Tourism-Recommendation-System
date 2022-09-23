@@ -1,5 +1,5 @@
 # Tourism recommendation system
-
+[![General badge](https://img.shields.io/badge/pip-v3-green.svg)](https://shields.io/)
  To start the application on your machine please open your command prompt or teminal and follow the steps below:
 
 ### Environment installation
